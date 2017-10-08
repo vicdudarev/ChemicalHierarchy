@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChemicalHierarchy
 {
@@ -24,7 +20,12 @@ namespace ChemicalHierarchy
         public ChemicalCrystalStructure(ChemicalModification modification, string spaceGroup,
             double numberOfFormulaUnits) : base(modification)
         {
-
+            if (string.IsNullOrEmpty(spaceGroup))
+                throw new ApplicationException("ChemicalCrystalStructure: spaceGroup is empty");
+            if (numberOfFormulaUnits <= 0)
+                throw new ApplicationException("ChemicalCrystalStructure: numberOfFormulaUnits<=0");
+            SpaceGroup = spaceGroup;
+            NumberOfFormulaUnits = numberOfFormulaUnits;
         }
 
 
@@ -32,6 +33,7 @@ namespace ChemicalHierarchy
         {
             return base.ToString() + " SpaceGroup: " + SpaceGroup + (NumberOfFormulaUnits>0 ? " NumberOfFormulaUnits: " + NumberOfFormulaUnits : "");
         }
+
     }
 
 }

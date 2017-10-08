@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System; 
 
 namespace ChemicalHierarchy
 {
@@ -10,7 +6,7 @@ namespace ChemicalHierarchy
     /// <summary>
     /// химическая модификация (добавляем к ChemicalSubstance тип кристаллической структуры)
     /// </summary>
-    public class ChemicalModification : ChemicalSubstance
+    public class ChemicalModification : ChemicalSubstance, IComparable<ChemicalModification>, IComparable
     {
         /// <summary>
         /// описание кристаллической структуры
@@ -58,5 +54,21 @@ namespace ChemicalHierarchy
         {
             return ModificationName;
         }
+
+
+        #region реализация интерфейсов IComparable<ChemicalModification> и IComparable
+        public int CompareTo(ChemicalModification other)
+        {
+            if (other == null) return 1;
+            int retVal = (this as ChemicalSubstance).CompareTo(other as ChemicalSubstance);
+            if (retVal != 0)
+                return retVal;
+            return CrystalSystem.CompareTo(other.CrystalSystem);
+        }
+        public new int CompareTo(object obj)
+        {
+            return (this as IComparable<ChemicalModification>).CompareTo(obj as ChemicalModification);
+        }
+        #endregion
     }
 }
