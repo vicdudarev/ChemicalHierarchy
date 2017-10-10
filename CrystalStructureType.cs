@@ -5,7 +5,7 @@ namespace ChemicalHierarchy
     /// <summary>
     /// описание кристаллической структуры
     /// </summary>
-    public class ChemicalCrystalStructure : ChemicalModification
+    public class ChemicalCrystalStructure : ChemicalCrystalSystem, IComparable<ChemicalCrystalStructure>, IComparable
     {
         /// <summary>
         /// пространственная группа
@@ -17,8 +17,8 @@ namespace ChemicalHierarchy
         /// </summary>
         public double NumberOfFormulaUnits { get; }
 
-        public ChemicalCrystalStructure(ChemicalModification modification, string spaceGroup,
-            double numberOfFormulaUnits) : base(modification)
+        public ChemicalCrystalStructure(ChemicalCrystalSystem crystalSystem, string spaceGroup,
+            double numberOfFormulaUnits) : base(crystalSystem)
         {
             if (string.IsNullOrEmpty(spaceGroup))
                 throw new ApplicationException("ChemicalCrystalStructure: spaceGroup is empty");
@@ -33,6 +33,24 @@ namespace ChemicalHierarchy
         {
             return base.ToString() + " SpaceGroup: " + SpaceGroup + (NumberOfFormulaUnits>0 ? " NumberOfFormulaUnits: " + NumberOfFormulaUnits : "");
         }
+
+        #region реализация интерфейсов IComparable<ChemicalCrystalSystem> и IComparable
+        public int CompareTo(ChemicalCrystalStructure other)
+        {
+            if (other == null) return 1;
+            int retVal = (this as ChemicalCrystalSystem).CompareTo(other as ChemicalCrystalSystem);
+            if (retVal != 0)
+                return retVal;
+            retVal = string.Compare(SpaceGroup, other.SpaceGroup, StringComparison.InvariantCultureIgnoreCase);
+            if (retVal != 0)
+                return retVal;
+            return NumberOfFormulaUnits.CompareTo(other.NumberOfFormulaUnits);
+        }
+        public new int CompareTo(object obj)
+        {
+            return (this as IComparable<ChemicalCrystalStructure>).CompareTo(obj as ChemicalCrystalStructure);
+        }
+        #endregion
 
     }
 

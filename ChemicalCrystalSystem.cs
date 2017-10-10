@@ -6,7 +6,7 @@ namespace ChemicalHierarchy
     /// <summary>
     /// химическая модификация (добавляем к ChemicalSubstance тип кристаллической структуры)
     /// </summary>
-    public class ChemicalModification : ChemicalSubstance, IComparable<ChemicalModification>, IComparable
+    public class ChemicalCrystalSystem : ChemicalSubstance, IComparable<ChemicalCrystalSystem>, IComparable
     {
         /// <summary>
         /// описание кристаллической структуры
@@ -36,7 +36,7 @@ namespace ChemicalHierarchy
         /// </summary>
         /// <param name="substance">вещество</param>
         /// <param name="cs"></param>
-        public ChemicalModification(ChemicalSubstance substance, CrystalSystemType cs) : base(substance)
+        public ChemicalCrystalSystem(ChemicalSubstance substance, CrystalSystemType cs) : base(substance)
         {
             CrystalSystem = cs;
         }
@@ -44,10 +44,10 @@ namespace ChemicalHierarchy
         /// <summary>
         /// конструктор копирования модификации
         /// </summary>
-        /// <param name="modification">химическая модификация</param>
-        public ChemicalModification(ChemicalModification modification) : base(modification)
+        /// <param name="crystalSystem">химическая модификация</param>
+        public ChemicalCrystalSystem(ChemicalCrystalSystem crystalSystem) : base(crystalSystem)
         {
-            CrystalSystem = modification.CrystalSystem;
+            CrystalSystem = crystalSystem.CrystalSystem;
         }
 
         public override string ToString()
@@ -56,8 +56,8 @@ namespace ChemicalHierarchy
         }
 
 
-        #region реализация интерфейсов IComparable<ChemicalModification> и IComparable
-        public int CompareTo(ChemicalModification other)
+        #region реализация интерфейсов IComparable<ChemicalCrystalSystem> и IComparable
+        public int CompareTo(ChemicalCrystalSystem other)
         {
             if (other == null) return 1;
             int retVal = (this as ChemicalSubstance).CompareTo(other as ChemicalSubstance);
@@ -67,7 +67,7 @@ namespace ChemicalHierarchy
         }
         public new int CompareTo(object obj)
         {
-            return (this as IComparable<ChemicalModification>).CompareTo(obj as ChemicalModification);
+            return (this as IComparable<ChemicalCrystalSystem>).CompareTo(obj as ChemicalCrystalSystem);
         }
         #endregion
     }

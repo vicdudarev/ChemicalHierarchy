@@ -8,7 +8,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="ChemicalHierarchy.ChemicalModification">
+  <Class Name="ChemicalHierarchy.ChemicalCrystalSystem">
     <Position X="9.5" Y="0.75" Width="2" />
     <InheritanceLine Type="ChemicalHierarchy.ChemicalSubstance" FixedToPoint="true">
       <Path>
@@ -18,7 +18,7 @@
     </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAABAAAAAgAAAAQEAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ChemicalModification.cs</FileName>
+      <FileName>ChemicalCrystalSystem.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -39,20 +39,12 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ChemicalHierarchy.ChemicalCrystalStructure">
-    <Position X="6.5" Y="6.75" Width="1.75" />
-    <InheritanceLine Type="ChemicalHierarchy.ChemicalModification" ManuallyRouted="true" FixedToPoint="true">
-      <Path>
-        <Point X="10.5" Y="3.204" />
-        <Point X="10.5" Y="6.375" />
-        <Point X="6.125" Y="6.375" />
-        <Point X="6.125" Y="7.562" />
-        <Point X="6.5" Y="7.562" />
-      </Path>
-    </InheritanceLine>
+    <Position X="9.75" Y="4.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAACAAAAAQAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAQEAAAAAAAACAAAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>CrystalStructureType.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="ChemicalHierarchy.Quantity" Collapsed="true">
     <Position X="1.25" Y="0.75" Width="1.5" />
@@ -65,7 +57,7 @@
   <Enum Name="ChemicalHierarchy.CrystalSystemType" Collapsed="true">
     <Position X="0.5" Y="4.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAABAAAAAEAAAAQAAAAgACAAAAABAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAABAAAAAEAAAAQAAAAgACAAAAABAAACAAA=</HashCode>
       <FileName>CrystalSystemType.cs</FileName>
     </TypeIdentifier>
   </Enum>
